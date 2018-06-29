@@ -1,0 +1,62 @@
+
+
+#ps -eo comm,%mem,%cpu --sort=-%cpu | head | grep -v COMMAND | sed -e "s/  */,/g"
+
+
+showLoad() {
+    clear
+    echo
+    echo "+-----------------------+"
+    echo "|        MEMORY%        |"
+    echo "+-----------------------+"
+    ps -eo comm,%mem --sort=-%mem | grep -v COMMAND | head  -5 | sed -e "s/^/| /g" -e "s/$/  |/g"
+    echo "+-----------------------+"
+
+    echo
+
+export totalMemory=0;
+for Memory in `ps -eo %mem --sort=-%mem | grep -v MEM | head  -5`
+do
+    totalMemory=`echo "$totalMemory + $Memory" | bc`
+done 
+
+printf "totalMemory=%.0f" $totalMemory
+    echo
+
+    
+    echo
+    
+    echo "+-----------------------+"
+    echo "|         CPU%          |"
+    echo "+-----------------------+"
+    ps -eo comm,%cpu --sort=-%cpu | grep -v COMMAND | head  -5 | sed -e "s/^/| /g" -e "s/$/  |/g"
+    echo "+-----------------------+"
+    echo
+
+
+export totalCPU=0;
+for cpu in `ps -eo %cpu --sort=-%cpu | grep -v CPU | head  -5`
+do
+    totalCPU=`echo "$totalCPU + $cpu" | bc`
+done
+printf "totalCPU=%.0f" $totalCPU
+    echo
+    echo
+    echo
+
+
+
+    echo "Press Enter to refresh. Ctrl+C to Exit."
+
+
+}
+
+
+
+
+
+showLoad
+while read line
+do
+  showLoad
+done

@@ -1,0 +1,11 @@
+export TABLE="$1"
+
+KEY=`desc $TABLE  | grep -i auto_increment | cut -f1 -d'	'`
+
+
+if [ ${#KEY} -eq 0 ]
+then
+    runsqlf "select * from $TABLE limit 40;"
+else
+    runsqlf "select * from $TABLE order by $KEY desc limit 40;"
+fi

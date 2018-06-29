@@ -1,0 +1,6 @@
+
+runsql "SELECT left(replace(info,'\n','<lf>'),2000)
+FROM information_schema.processlist
+WHERE command <> 'Sleep'
+AND info NOT LIKE '%PROCESSLIST%'
+and id = $1;"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SQL="$1"
+
+#. ~/.profile
+
+/usr/bin/mysql --local-infile=1 --user=$MYSQL_USER -e "select count(*) from $SQL" $MYSQL_DB

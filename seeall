@@ -1,0 +1,4 @@
+export TABLE="$1"
+
+runsqlf "select * from $TABLE;" | less
+

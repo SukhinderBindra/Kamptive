@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SQL="$1"
+
+
+/usr/bin/mysql --local-infile=1 -h $MYSQL_HOST --user=$MYSQL_USER -N -B -e "$SQL" $MYSQL_DB

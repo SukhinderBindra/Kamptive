@@ -1,0 +1,3 @@
+STRING="$1"
+
+find . -type f  2>/dev/null | xargs grep "$STRING"  2>/dev/null | grep -v "min.js:" | grep -v archive | grep -v "Binary file" | cut -c1-200

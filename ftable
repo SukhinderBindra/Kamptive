@@ -1,0 +1,4 @@
+
+TABLE_NAME="$1"
+
+runsqlf "SELECT TABLE_SCHEMA, TABLE_NAME from information_schema.tables where TABLE_NAME = '$TABLE_NAME';"

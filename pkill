@@ -1,0 +1,1 @@
+runsqlf "kill $1;"

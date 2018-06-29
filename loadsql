@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FILE_NAME="$1"
+
+/usr/bin/mysql --local-infile=1 --user=$MYSQL_USER $MYSQL_DB < $FILE_NAME

@@ -1,0 +1,11 @@
+SQL="$1"
+
+
+if [ "$SQL" = "table" -o "$SQL" = "tables" -o "$SQL" = "" ]
+then
+   SQL="tables"
+else
+   SQL="databases"
+fi
+
+/usr/bin/mysql --local-infile=1 --user=$MYSQL_USER -e "show $SQL" $MYSQL_DB

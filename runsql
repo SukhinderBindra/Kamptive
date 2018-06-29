@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SQL="$1"
+
+
+#/usr/bin/mysql --local-infile=1 --user=$MYSQL_USER --password=$MYSQL_PASS  -N -B -e "$SQL" $MYSQL_DB
+
+/usr/bin/mysql --local-infile=1 --user=$MYSQL_USER   -N -B -e "$SQL" $MYSQL_DB

@@ -1,0 +1,8 @@
+
+#!/bin/bash
+
+SQL="$1"
+
+#. ~/.profile
+
+/usr/bin/mysql --local-infile=1 --user=$MYSQL_USER -e "$SQL"  "$MYSQL_DB"   |  sed 's/"//;s/\t/","/g;s/^/"/;s/$/"/;s/\n//g'
